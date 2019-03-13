@@ -9,12 +9,12 @@ var Jugador = {
   ancho: 15,
   alto: 30,
   velocidad: 10,
-  vidas: 5,
+  vidas: 5,  
   // Hay que agregar lo que falte al jugador: movimientos, perdida de vidas,
   mover: function(movX, movY, tecla){
     this.x+=movX;
     this.y+=movY;
-    if  (tecla=="arriba" || tecla=="izq"){
+    if  (tecla=="arriba" || tecla=="abajo"){
       this.ancho=15;
       this.alto=30;
     }if(tecla=="der" || tecla=="izq"){      
