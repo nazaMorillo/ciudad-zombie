@@ -14,13 +14,13 @@ var Jugador = {
   mover: function(movX, movY, tecla){
     this.x+=movX;
     this.y+=movY;
-/*    if (tecla=="der" || tacla=="izq") {
-      this.ancho=30;
-      this.alto=15;
-    }else if(tecla=="arriba" || tacla=="izq"){
+    if  (tecla=="arriba" || tecla=="izq"){
       this.ancho=15;
       this.alto=30;
-    }*/
+    }if(tecla=="der" || tecla=="izq"){      
+      this.ancho=30;
+      this.alto=15;
+    }
   },
   perderVidas: function(){
     this.vidas--;
