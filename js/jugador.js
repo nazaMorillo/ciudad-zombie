@@ -22,8 +22,8 @@ var Jugador = {
       this.alto=15;
     }
   },
-  perderVidas: function(){
-    this.vidas--;
+  perderVidas: function(cantVidas){
+    this.vidas-=cantVidas;
   },
   // y todo lo que haga falta para que cumpla con sus responsabilidades
 }

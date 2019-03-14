@@ -20,7 +20,24 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 115, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 160, 115, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 160, 220, 15, 30, 1),
+    new Obstaculo('imagenes/bache.png', 70, 280, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 100, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 170, 450, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 220, 480, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 300, 460, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 380, 420, 30, 15, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 530, 420, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 510, 450, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 510, 480, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 530, 118, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 865, 370, 15, 30, 1),
+    new Obstaculo('imagenes/bache.png', 820, 385, 30, 30, 1)
+
 
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
@@ -206,8 +223,8 @@ Juego.chequearColisiones = function(x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-
-      puedeMoverse = false
+      //obstaculo.chocar(this.jugador);
+      puedeMoverse = false;
     }
   }, this)
   return puedeMoverse
