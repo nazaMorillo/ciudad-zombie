@@ -12,6 +12,7 @@ var Juego = {
   // Aca se configura el tamanio del canvas del juego
   anchoCanvas: 961,
   altoCanvas: 577,
+  comienzoLlegada :756,
   jugador: Jugador,
   vidasInicial: Jugador.vidas,
   // Indica si el jugador gano
@@ -37,6 +38,8 @@ var Juego = {
     new Obstaculo('imagenes/bache.png', 530, 118, 30, 30, 1),
     new Obstaculo('imagenes/auto_verde_abajo.png', 865, 370, 15, 30, 1),
     new Obstaculo('imagenes/bache.png', 820, 385, 30, 30, 1)
+    //new Obstaculo('imagenes/llegada.png', 820, 400, 30, 30)
+    //new Elemento_pintado('imagenes/Mapa/llegada.png', 820, 400, 30, 30)
 
 
   ],
@@ -89,7 +92,8 @@ Juego.iniciarRecursos = function() {
     'imagenes/auto_rojo_derecha.png',
     'imagenes/auto_rojo_izquierda.png',
     'imagenes/auto_verde_abajo.png',
-    'imagenes/auto_verde_derecha.png'
+    'imagenes/auto_verde_derecha.png',
+    'imagenes/llegada.png'
   ]);
   Resources.onReady(this.comenzar.bind(Juego));
 };
@@ -186,6 +190,9 @@ Juego.dibujar = function() {
     var x = tamanio * i
     Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
   }
+   
+  Dibujante.dibujarLlegada("white", this.comienzoLlegada,500 , 7, 7);
+  
 };
 
 
@@ -223,7 +230,9 @@ Juego.chequearColisiones = function(x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-      //obstaculo.chocar(this.jugador);
+      //this.jugador.perderVidas(1);
+      obstaculo.chocar(this.jugador);
+      console.log(obstaculo.sprite);
       puedeMoverse = false;
     }
   }, this)

@@ -37,4 +37,16 @@ var Dibujante = {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, ancho, alto);
   },
+  dibujarLlegada: function(color, x, y, ancho, alto){
+    for(var i = 0; i < 19; i++){        
+      Dibujante.dibujarRectangulo(color, x, y, ancho, alto);    
+      if (color=="white") {
+        color="black";
+      }else if(color=="black"){
+        color="white";
+      }
+      Dibujante.dibujarRectangulo(color, x, y+alto, ancho, alto);
+      x+=ancho;
+    }
+  },
 }
