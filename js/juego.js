@@ -64,11 +64,11 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-    new ZombieCaminante('imagenes/zombie1.png',920 , 100, 10, 10, 3, 960),
-    new ZombieCaminante('imagenes/zombie2.png',500 , 200, 10, 10, 3, 960),
-    new ZombieCaminante('imagenes/zombie3.png',300 , 250, 10, 10, 3, 960),
-    new ZombieCaminante('imagenes/zombie4.png',600 , 300, 10, 10, 3, 960),
-    new ZombieCaminante('imagenes/zombie1.png',920 , 450, 10, 10, 3, 960),
+    new ZombieCaminante('imagenes/zombie1.png',920 , 100, 10, 10, 2, 960),
+    new ZombieCaminante('imagenes/zombie2.png',500 , 200, 10, 10, 1, 960),
+    new ZombieCaminante('imagenes/zombie3.png',300 , 250, 10, 10, 2, 960),
+    new ZombieCaminante('imagenes/zombie4.png',600 , 300, 10, 10, 1, 960),
+    new ZombieCaminante('imagenes/zombie1.png',920 , 450, 10, 10, 2, 960),
     new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 13, 960, "h"),
     new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 13, 960, "v"),
     new ZombieConductor('imagenes/tren_vertical.png',678 , 0, 30, 90, 13, 960, "v")
@@ -120,7 +120,6 @@ Juego.comenzar = function() {
 };
 
 Juego.buclePrincipal = function() {
-
   // Con update se actualiza la logica del juego, tanto ataques como movimientos
   this.update();
   // Funcion que dibuja por cada fotograma a los objetos en pantalla.
@@ -209,6 +208,9 @@ un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
   /* COMPLETAR */
+  this.enemigos.forEach(function(enemigo) {
+    enemigo.mover();
+  });
 };
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
