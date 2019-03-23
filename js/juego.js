@@ -241,7 +241,6 @@ Juego.chequearColisiones = function(x, y) {
       /*COMPLETAR, obstaculo debe chocar al jugador*/
       //this.jugador.perderVidas(1);
       obstaculo.chocar(this.jugador);
-      console.log(obstaculo.sprite);
       puedeMoverse = false;
     }
   }, this)

@@ -6,6 +6,7 @@ el archivo Enemigo.js para entender que es cada uno. */
 var ZombieCaminante = function(sprite, x, y, ancho, alto, velocidad, rangoMov) {
   /* ZombieCaminante llama al constructor de Enemigo utilizando los parametros
   necesarios */
+
   Enemigo.call(this, sprite, x, y, ancho, alto, velocidad, rangoMov);
 }
 /* Completamos la creacion del objeto asignando su prototipo y la funcion
@@ -29,7 +30,7 @@ ZombieCaminante.prototype.mover = function() {
   /* En esta parte lo que hacemos es invertir la direccion horizontal si
   toca uno de sus limites, modificando su velocidad. Si multiplicamos por -1 la
   velocidad lo que estamos haciendo es invertir su direccion.*/
-  if ((this.x < this.rangoMov.desdeX) || (this.x > this.rangoMov.hastaX)){
+  if ((this.x < 0/*this.rangoMov.desdeX*/) || (this.x > 577/*this.rangoMov.hastaX*/)){
     this.velocidad *= -1;
   }
   // Si sobrepasa el rangoY, lo manda al centro entre ambos rangos
