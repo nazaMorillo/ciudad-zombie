@@ -23,7 +23,7 @@ ZombieConductor.prototype.mover = function() {
   //console.log(this.direcMov);
   if (this.direcMov=="h") {
     this.x -= this.velocidad;
-  } else if (this.direcMov=="v"){
+  } else if (this.direcMov=="vD" || this.direcMov=="vI"){
     //Sino, hace otro movimiento
     this.y += this.velocidad;
   }
@@ -31,11 +31,12 @@ ZombieConductor.prototype.mover = function() {
   /* En esta parte lo que hacemos es invertir la direccion horizontal si
   toca uno de sus limites, modificando su velocidad. Si multiplicamos por -1 la
   velocidad lo que estamos haciendo es invertir su direccion.*/
-  if ((this.x < 0) || (this.x > this.rangoMov)){
+  if ((this.x < this.rangoMov.desdeX) || (this.x > this.rangoMov.hastaX)){
     this.velocidad *= -1;
   }
   // Si sobrepasa el rangoY, lo manda al centro entre ambos rangos
-  if ((this.y < 0) || (this.y > 577)) {
+  if ((this.y < this.rangoMov.desdeY) || (this.y > this.rangoMov.hastaY)) {
     this.velocidad *= -1;
+
   }
 }

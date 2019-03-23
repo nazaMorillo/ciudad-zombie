@@ -7,6 +7,13 @@ texto COMPLETAR que deben completarse segun lo indique la consigna.
 
 El objeto Juego contiene mucho codigo. Tomate tu tiempo para leerlo tranquilo
 y entender que es lo que hace en cada una de sus partes. */
+var RangoMov={
+  desdeX : 0,
+  hastaX : 961,
+  desdeY : 0,
+  hastaY : 577
+}
+
 
 var Juego = {
   // Aca se configura el tamanio del canvas del juego
@@ -64,14 +71,14 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-    new ZombieCaminante('imagenes/zombie1.png',920 , 100, 10, 10, 2, 960),
-    new ZombieCaminante('imagenes/zombie2.png',500 , 200, 10, 10, 1, 960),
-    new ZombieCaminante('imagenes/zombie3.png',300 , 250, 10, 10, 2, 960),
-    new ZombieCaminante('imagenes/zombie4.png',600 , 300, 10, 10, 1, 960),
-    new ZombieCaminante('imagenes/zombie1.png',920 , 450, 10, 10, 2, 960),
-    new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 13, 960, "h"),
-    new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 13, 960, "v"),
-    new ZombieConductor('imagenes/tren_vertical.png',678 , 0, 30, 90, 13, 960, "v")
+    new ZombieCaminante('imagenes/zombie1.png',850 , 200, 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie2.png',500 , 250, 10, 10, 1, RangoMov),
+    new ZombieCaminante('imagenes/zombie3.png',300 , 300, 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie4.png',750 , 350, 10, 10, 1, RangoMov),
+    new ZombieCaminante('imagenes/zombie1.png',850 , 450, 10, 10, 2, RangoMov),
+    new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 13, RangoMov, "h"),
+    new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 13, RangoMov, "vI"),
+    new ZombieConductor('imagenes/tren_vertical.png',678 , 0, 30, 90, 5, RangoMov, "vD")
   ]
 
 }
