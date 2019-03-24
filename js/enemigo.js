@@ -40,6 +40,6 @@ Enemigo.prototype.comenzarAtaque = function (jugador) {
 }
 /* Cuando el enemigo no este contacto con el jugador, se utilizara el metodo
 dejarDeAtacar para modificar la propiedad atacando*/
-Enemigo.prototype.dejarDeAtacar = function () {
+Enemigo.prototype.dejarDeAtacar = function (jugador) {
   this.atacando = false;
 }

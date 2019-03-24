@@ -11,9 +11,19 @@ var RangoMov={
   desdeX : 0,
   hastaX : 961,
   desdeY : 0,
-  hastaY : 577
+  hastaY : 577,
+  randomX:function(){
+    var min=this.desdeX; 
+    var max=this.hastaX;
+    return (Math.floor(Math.random() * (+max - +min)) + +min);
+    //Math.floor(Math.random() * (max - min) ) + min)
+  },
+  randomY:function(){
+    var min=this.desdeY; 
+    var max=this.hastaY;  
+    return (Math.floor(Math.random() * (+max - +min)) + +min);
+  }
 }
-
 
 var Juego = {
   // Aca se configura el tamanio del canvas del juego
@@ -71,13 +81,13 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-    new ZombieCaminante('imagenes/zombie1.png',850 , 200, 10, 10, 2, RangoMov),
-    new ZombieCaminante('imagenes/zombie2.png',500 , 250, 10, 10, 1, RangoMov),
-    new ZombieCaminante('imagenes/zombie3.png',300 , 300, 10, 10, 2, RangoMov),
-    new ZombieCaminante('imagenes/zombie4.png',750 , 350, 10, 10, 1, RangoMov),
-    new ZombieCaminante('imagenes/zombie1.png',850 , 450, 10, 10, 2, RangoMov),
-    new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 13, RangoMov, "h"),
-    new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 13, RangoMov, "vI"),
+    new ZombieCaminante('imagenes/zombie1.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie2.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
+    new ZombieCaminante('imagenes/zombie3.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie4.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
+    new ZombieCaminante('imagenes/zombie1.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
+    new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 8, RangoMov, "h"),
+    new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 10, RangoMov, "vI"),
     new ZombieConductor('imagenes/tren_vertical.png',678 , 0, 30, 90, 5, RangoMov, "vD")
   ]
 
@@ -198,14 +208,12 @@ Juego.dibujar = function() {
 
   // El dibujante dibuja las vidas del jugador
   var tamanio = this.anchoCanvas / this.vidasInicial;
-  Dibujante.dibujarRectangulo('white', 0, 0, this.anchoCanvas, 8);
+  Dibujante.dibujarRectangulo('red', 0, 0, this.anchoCanvas, 15);
   for (var i = 0; i < this.jugador.vidas; i++) {
     var x = tamanio * i
-    Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
-  }
-   
-  Dibujante.dibujarLlegada("white", this.comienzoLlegada,500 , 7, 7);
-  
+    Dibujante.dibujarRectangulo('green', x, 0, tamanio, 15);
+  }   
+  Dibujante.dibujarLlegada("white", this.comienzoLlegada,500 , 7, 7);  
 };
 
 
@@ -229,9 +237,11 @@ Juego.calcularAtaques = function() {
     if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
       /* Si el enemigo colisiona debe empezar su ataque
       COMPLETAR */
+      enemigo.comenzarAtaque(this.jugador);
     } else {
       /* Sino, debe dejar de atacar
       COMPLETAR */
+      enemigo.dejarDeAtacar(this.jugador);
     }
   }, this);
 };
@@ -273,12 +283,23 @@ Juego.intersecan = function(elemento1, elemento2, x, y) {
 Juego.dibujarFondo = function() {
   // Si se termino el juego hay que mostrar el mensaje de game over de fondo
   if (this.terminoJuego()) {
+    this.jugador.velocidad=0;
+    //delete this.enemigos;
+    this.enemigos.forEach(function(enemigo) {
+    enemigo.velocidad=0;
+    });
+    //delete this.obstaculosCarretera;
     Dibujante.dibujarImagen('imagenes/mensaje_gameover.png', 0, 5, this.anchoCanvas, this.altoCanvas);
     document.getElementById('reiniciar').style.visibility = 'visible';
   }
 
   // Si se gano el juego hay que mostrar el mensaje de ganoJuego de fondo
   else if (this.ganoJuego()) {
+    this.enemigos.forEach(function(enemigo) {
+    enemigo.velocidad=0;
+    });
+    delete this.obstaculosCarretera;
+    this.jugador.velocidad=0;
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
   } else {
@@ -287,11 +308,13 @@ Juego.dibujarFondo = function() {
 };
 
 Juego.terminoJuego = function() {
+  
   return this.jugador.vidas <= 0;
 };
 
 /* Se gana el juego si se sobre pasa cierto altura y */
 Juego.ganoJuego = function() {
+  
   return (this.jugador.y + this.jugador.alto) > 530;
 };
 
