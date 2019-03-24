@@ -300,6 +300,9 @@ Juego.dibujarFondo = function() {
     });
     delete this.obstaculosCarretera;
     this.jugador.velocidad=0;
+    if (this.jugador.vidas==5) {
+      alert("Felicitaciones!!! \nHiciste puntaje perfecto!");
+    }
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
   } else {
