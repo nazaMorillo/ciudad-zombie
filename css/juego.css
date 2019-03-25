@@ -6,7 +6,7 @@ body {
 }
 canvas {
   width: 65%;
-  background: url("../imagenes/Mensaje1.png");
+  /*background: url("../imagenes/Mensaje1.png");*/
   margin: auto;
   display: flex;
   margin-top: 7%;
