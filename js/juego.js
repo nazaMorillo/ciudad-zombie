@@ -117,6 +117,8 @@ Juego.iniciarRecursos = function() {
     'imagenes/auto_rojo_izquierda.png',
     'imagenes/auto_verde_abajo.png',
     'imagenes/auto_verde_derecha.png',
+    'imagenes/Mensaje1.png',
+    'imagenes/Mensaje2.png',
     'imagenes/llegada.png'
   ]);
   Resources.onReady(this.comenzar.bind(Juego));
@@ -128,11 +130,17 @@ Juego.obstaculos = function() {
 };
 
 Juego.comenzar = function() {
+
   // Inicializar el canvas del juego
   Dibujante.inicializarCanvas(this.anchoCanvas, this.altoCanvas);
   /* El bucle principal del juego se llamara continuamente para actualizar
   los movimientos y el pintado de la pantalla. Sera el encargado de calcular los
   ataques, colisiones, etc*/
+
+/*  setInterval(function(){
+    Dibujante.dibujarImagen('imagenes/Mensaje1.png', 0, 5, this.anchoCanvas, this.altoCanvas);
+  }, 5000);
+*/
   this.buclePrincipal();
 };
 
@@ -282,30 +290,34 @@ Juego.intersecan = function(elemento1, elemento2, x, y) {
 
 Juego.dibujarFondo = function() {
   // Si se termino el juego hay que mostrar el mensaje de game over de fondo
-  if (this.terminoJuego()) {
-    this.jugador.velocidad=0;
-    //delete this.enemigos;
+  if (this.terminoJuego()) {    
+    this.jugador.velocidad=0;    
     this.enemigos.forEach(function(enemigo) {
     enemigo.velocidad=0;
+    delete enemigo;
     });
-    //delete this.obstaculosCarretera;
+    delete this.obstaculosCarretera;
+
     Dibujante.dibujarImagen('imagenes/mensaje_gameover.png', 0, 5, this.anchoCanvas, this.altoCanvas);
     document.getElementById('reiniciar').style.visibility = 'visible';
+    document.getElementById("botonera").style.visibility = "hidden";
   }
 
   // Si se gano el juego hay que mostrar el mensaje de ganoJuego de fondo
   else if (this.ganoJuego()) {
     this.enemigos.forEach(function(enemigo) {
     enemigo.velocidad=0;
+    delete enemigo;
     });
     delete this.obstaculosCarretera;
     this.jugador.velocidad=0;
     if (this.jugador.vidas==5) {
-      alert("Felicitaciones!!! \nHiciste puntaje perfecto!");
+      alert("Felicitaciones, ganaste!!!\nHiciste puntaje perfecto!");
     }
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
-  } else {
+  } else {    
+    document.getElementById("botonera").style.visibility = "visible";
     Dibujante.dibujarImagen('imagenes/mapa.png', 0, 5, this.anchoCanvas, this.altoCanvas);
   }
 };
@@ -322,7 +334,7 @@ Juego.ganoJuego = function() {
 };
 
 Juego.iniciarRecursos();
-
+  
 // Activa las lecturas del teclado al presionar teclas
 // Documentacion: https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener
 document.addEventListener('keydown', function(e) {
@@ -335,3 +347,4 @@ document.addEventListener('keydown', function(e) {
 
   Juego.capturarMovimiento(allowedKeys[e.keyCode]);
 });
+

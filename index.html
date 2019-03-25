@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+<meta charset="utf8">
+<title>Ciudad Zombie</title>
+<link rel="icon" type="image/png" href="imagenes/zombie3.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!-- Incluir los archivos donde este guardado el estilo en formato css -->
 <link rel="stylesheet" href="css/juego.css">
 <!-- Incluir los archivos donde este el codigo Javascript del juego -->
@@ -15,7 +18,20 @@
 <script src='js/zombie_conductor.js'></script>
 <script src='js/juego.js'> </script>
 </head>
-
+<body>
 <input type="button" value="< Clic para volver a Jugar  >" onClick="window.location.reload()" class="boton-recargar" id="reiniciar">
+
+	<div id="botonera">
+		<div class="izq" onclick="document.getElementById('audio').play()">
+			<input type="button" value="↑" onClick="Juego.capturarMovimiento('arriba')" class="flecha" id="flechaUp">
+			<input type="button" value="↓" onClick="Juego.capturarMovimiento('abajo')" class="flecha" id="flechaDown">
+		</div>
+		<div class="der">
+			<input type="button" value="←" onClick="Juego.capturarMovimiento('izq')" class="flecha" id="flechaIzq">
+			<input type="button" value="→" onClick="Juego.capturarMovimiento('der')" class="flecha" id="flechaDer">
+		</div>	
+	</div>
+
+<iframe src="audio/zombie.mp3" allow="autoplay" id="audio" style="display:none" autoplay loop></iframe>
 </body>
 </html>

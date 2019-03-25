@@ -1,23 +1,120 @@
+*{
+  padding: 0;
+}
 body {
   background-image: url('../imagenes/fondo.png');
 }
-
 canvas {
+  width: 65%;
+  background: url("../imagenes/Mensaje1.png");
   margin: auto;
   display: flex;
-  margin-top: calc(50vh - 286px);
+  margin-top: 7%;
+  /*margin-top: calc(50vh - 286px);*/
 }
 
 .boton-recargar {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 20%;
   position: absolute;
-  top:19%;
-  left: 15%;
-  padding: 380px 20% 168px 20%;
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 2em; 
-  display: flex;  
+  top:0;
+  left: 0; 
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 2em;
   border: 4px solid green;
   color: white;
   font-family: monospace;
   visibility: hidden;
+}
+#botonera{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  visibility: hidden;
+}
+.izq{
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.izq{
+  display: flex;
+  justify-content: space-between;
+}
+#flechaDer{
+  margin: 0 35px 0 55px;
+}
+.flecha{
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  font-size: 1.6em;
+  color: rgba(240, 240, 240, 0.4); 
+}
+input{
+  border: rgba(0, 0, 0, 0.5);  
+}
+.flecha:focus {
+  outline: none;
+}
+.flecha:hover{
+  background-color: rgba(240, 240, 240, 0.4);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+#flechaUp{
+  /*background: url('../imagenes/up.png') no-repeat center center;*/
+}
+#flechaDown{
+  /*background: url('../imagenes/abajo.png')no-repeat center center;*/
+}
+#flechaIzq{
+  /*background: url('../imagenes/izq.png')no-repeat center center;*/
+}
+#flechaDer{
+  /*background: url('../imagenes/der.png')no-repeat center center;*/
+}
+
+@media screen and (max-width: 1200px){
+  canvas {
+  width: 95%;
+  }
+  .botonera{
+    visibility: visible;
+  }
+}
+@media screen and (max-width: 900px){
+  canvas {
+  width: 100%;
+  }
+  
+}
+
+@media screen and (max-width: 640px){
+  canvas {
+  width: 91%;
+  margin-top: 0;
+  }
+}
+@media screen and (max-width: 360px){
+  canvas {
+  width: 100%;
+  margin-top: 25%;
+  }
+  .boton-recargar {
+    height: 34vh;
+    font-size: 1.3em;
+    margin-top: 22%;
+    padding-top: 28%;   
+  }
 }
