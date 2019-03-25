@@ -81,11 +81,11 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-    new ZombieCaminante('imagenes/zombie1.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
-    new ZombieCaminante('imagenes/zombie2.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
-    new ZombieCaminante('imagenes/zombie3.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
-    new ZombieCaminante('imagenes/zombie4.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
-    new ZombieCaminante('imagenes/zombie1.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie1.png', 'imagenes/zombie1d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie2.png', 'imagenes/zombie2d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
+    new ZombieCaminante('imagenes/zombie3.png', 'imagenes/zombie3d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
+    new ZombieCaminante('imagenes/zombie4.png', 'imagenes/zombie4d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
+    new ZombieCaminante('imagenes/zombie1.png', 'imagenes/zombie1d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
     new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 8, RangoMov, "h"),
     new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 10, RangoMov, "vI"),
     new ZombieConductor('imagenes/tren_vertical.png',678 , 0, 30, 90, 5, RangoMov, "vD")
@@ -111,6 +111,10 @@ Juego.iniciarRecursos = function() {
     'imagenes/zombie2.png',
     'imagenes/zombie3.png',
     'imagenes/zombie4.png',
+    'imagenes/zombie1d.png',
+    'imagenes/zombie2d.png',
+    'imagenes/zombie3d.png',
+    'imagenes/zombie4d.png',
     'imagenes/auto_rojo_abajo.png',
     'imagenes/auto_rojo_arriba.png',
     'imagenes/auto_rojo_derecha.png',
@@ -302,7 +306,6 @@ Juego.dibujarFondo = function() {
     document.getElementById('reiniciar').style.visibility = 'visible';
     document.getElementById("botonera").style.visibility = "hidden";
   }
-
   // Si se gano el juego hay que mostrar el mensaje de ganoJuego de fondo
   else if (this.ganoJuego()) {
     this.enemigos.forEach(function(enemigo) {
@@ -310,6 +313,7 @@ Juego.dibujarFondo = function() {
     delete enemigo;
     });
     delete this.obstaculosCarretera;
+    document.getElementById("botonera").style.visibility = "hidden";
     this.jugador.velocidad=0;
     if (this.jugador.vidas==5) {
       alert("Felicitaciones, ganaste!!!\nHiciste puntaje perfecto!");

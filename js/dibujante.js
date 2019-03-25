@@ -14,6 +14,7 @@ var Dibujante = {
     this.canvas.width = anchoCanvas;
     this.canvas.height = altoCanvas;
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    
   },
 
   /* Dibuja una imagen a partir de su ruta, en la posicion x, y
