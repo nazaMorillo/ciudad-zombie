@@ -3,6 +3,7 @@
 }
 body {
   background-image: url('../imagenes/fondo.png');
+  background-size: cover;
 }
 canvas {
   width: 65%;
@@ -34,7 +35,7 @@ canvas {
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   visibility: hidden;
@@ -43,13 +44,14 @@ canvas {
   margin-left: 30px;
   display: flex;
   flex-direction: column;
-}
-.izq{
-  display: flex;
   justify-content: space-between;
 }
+
 #flechaDer{
   margin: 0 25px 0 45px;
+}
+#flechaIzq{
+  margin-left: 45px;
 }
 .flecha{
   width: 70px;
@@ -72,32 +74,20 @@ input{
   color: rgba(0, 0, 0, 0.4);
 }
 
-#flechaUp{
-  /*background: url('../imagenes/up.png') no-repeat center center;*/
-}
-#flechaDown{
-  /*background: url('../imagenes/abajo.png')no-repeat center center;*/
-}
-#flechaIzq{
-  /*background: url('../imagenes/izq.png')no-repeat center center;*/
-}
-#flechaDer{
-  /*background: url('../imagenes/der.png')no-repeat center center;*/
-}
 
 @media screen and (max-width: 1200px){
   canvas {
   width: 95%;
+  margin-top: 0;
   }
-  .botonera{
-    visibility: visible;
+  #botonera{
+    display: flex;
   }
 }
 @media screen and (max-width: 900px){
   canvas {
   width: 100%;
   }
-  
 }
 
 @media screen and (max-width: 640px){
@@ -117,4 +107,16 @@ input{
     margin-top: 22%;
     padding-top: 28%;   
   }
+  #botonera{
+    align-items: flex-end;
+  }
 }
+
+/** { outline: 2px dotted red }
+* * { outline: 2px dotted green }
+* * * { outline: 2px dotted orange }
+* * * * { outline: 2px dotted blue }
+* * * * * { outline: 1px solid red }
+* * * * * * { outline: 1px solid green }
+* * * * * * * { outline: 1px solid orange }
+* * * * * * * * { outline: 1px solid blue }*/

@@ -86,9 +86,9 @@ var Juego = {
     new ZombieCaminante('imagenes/zombie3.png', 'imagenes/zombie3d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
     new ZombieCaminante('imagenes/zombie4.png', 'imagenes/zombie4d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 1, RangoMov),
     new ZombieCaminante('imagenes/zombie1.png', 'imagenes/zombie1d.png',RangoMov.randomX(),RangoMov.randomY() , 10, 10, 2, RangoMov),
-    new ZombieConductor('imagenes/tren_horizontal.png',400 , 322, 90, 30, 8, RangoMov, "h"),
+    new ZombieConductor('imagenes/tren_horizontal.png',400 , 324, 90, 30, 8, RangoMov, "h"),
     new ZombieConductor('imagenes/tren_vertical.png',644 , 0, 30, 90, 10, RangoMov, "vI"),
-    new ZombieConductor('imagenes/tren_vertical.png',678 , 0, 30, 90, 5, RangoMov, "vD")
+    new ZombieConductor('imagenes/tren_vertical.png',674 , 0, 30, 90, 5, RangoMov, "vD")
   ]
 
 }
@@ -304,7 +304,7 @@ Juego.dibujarFondo = function() {
 
     Dibujante.dibujarImagen('imagenes/mensaje_gameover.png', 0, 5, this.anchoCanvas, this.altoCanvas);
     document.getElementById('reiniciar').style.visibility = 'visible';
-    document.getElementById("botonera").style.visibility = "hidden";
+    document.getElementById("botonera").style.display = "none";
   }
   // Si se gano el juego hay que mostrar el mensaje de ganoJuego de fondo
   else if (this.ganoJuego()) {
@@ -313,7 +313,7 @@ Juego.dibujarFondo = function() {
     delete enemigo;
     });
     delete this.obstaculosCarretera;
-    document.getElementById("botonera").style.visibility = "hidden";
+    document.getElementById("botonera").style.display = "none";
     this.jugador.velocidad=0;
     if (this.jugador.vidas==5) {
       alert("Felicitaciones, ganaste!!!\nHiciste puntaje perfecto!");
