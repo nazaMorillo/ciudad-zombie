@@ -21,6 +21,17 @@ var Jugador = {
       this.ancho=30;
       this.alto=15;
     }
+
+    switch(tecla){
+      case "arriba": this.sprite= "imagenes/auto_rojo_arriba.png";        
+      break;
+      case "abajo": this.sprite= "imagenes/auto_rojo_abajo.png";
+      break;
+      case "izq": this.sprite= "imagenes/auto_rojo_izquierda.png";
+      break;
+      case "der": this.sprite= "imagenes/auto_rojo_derecha.png";
+      break;
+    }
   },
   perderVidas: function(cantVidas){
     this.vidas-=cantVidas;
