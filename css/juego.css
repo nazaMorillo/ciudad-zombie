@@ -4,16 +4,26 @@
 body {
   background-image: url('../imagenes/fondo.png');
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
 }
 canvas {
   width: 65%;
-  /*background: url("../imagenes/Mensaje1.png");*/
+  background-color: rgba(182, 255, 96, 0.40);
   margin: auto;
   display: flex;
-  margin-top: 7%;
-  /*margin-top: calc(50vh - 286px);*/
+  margin-top: 6%;
 }
-
+a{
+  font-size: 2em;  
+  color: white;
+  font-family: monospace;
+  text-decoration: none;
+}
 .boton-recargar {
   width: 100%;
   height: 100vh;
@@ -29,6 +39,17 @@ canvas {
   color: white;
   font-family: monospace;
   visibility: hidden;
+}
+.boton-continuar{
+  width: 100%;
+  padding-top: 3%; 
+  padding-bottom: 4%;
+  text-align: center;
+  position: fixed;
+  bottom:0;
+  left: 0; 
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 2em;
 }
 #botonera{
   position: fixed;
@@ -66,6 +87,7 @@ canvas {
 input{
   border: rgba(0, 0, 0, 0.5);  
 }
+
 .flecha:focus {
   outline: none;
 }
@@ -74,8 +96,10 @@ input{
   color: rgba(0, 0, 0, 0.4);
 }
 
-
 @media screen and (max-width: 1200px){
+  body {
+    margin: 0;
+  }
   canvas {
   width: 95%;
   margin-top: 0;
@@ -83,24 +107,36 @@ input{
   #botonera{
     display: flex;
   }
+  img{
+    width: 90%;
+  }
+  .boton-continuar {
+    padding-bottom: 3%;
+  }
 }
 @media screen and (max-width: 900px){
-  canvas {
+  canvas , img {
   width: 100%;
+  }
+  .boton-continuar {
+    padding-bottom: 5%;
   }
 }
 
 @media screen and (max-width: 640px){
-  canvas {
+  canvas, img {
   width: 91%;
   margin-top: 0;
   }
+  .boton-continuar {
+    padding-top: 2%;
+  }
 }
 @media screen and (max-width: 360px){
-  canvas {
+  canvas , img {
   width: 100%;
   margin-top: 25%;
-  }
+  }  
   .boton-recargar {
     height: 34vh;
     font-size: 1.3em;

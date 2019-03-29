@@ -141,10 +141,6 @@ Juego.comenzar = function() {
   los movimientos y el pintado de la pantalla. Sera el encargado de calcular los
   ataques, colisiones, etc*/
 
-/*  setInterval(function(){
-    Dibujante.dibujarImagen('imagenes/Mensaje1.png', 0, 5, this.anchoCanvas, this.altoCanvas);
-  }, 5000);
-*/
   this.buclePrincipal();
 };
 
@@ -228,8 +224,6 @@ Juego.dibujar = function() {
   Dibujante.dibujarLlegada("white", this.comienzoLlegada,500 , 7, 7);  
 };
 
-
-
 /* Recorre los enemigos haciendo que se muevan. De la misma forma que hicimos
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
@@ -258,17 +252,15 @@ Juego.calcularAtaques = function() {
   }, this);
 };
 
-
-
-/* Aca se chequea si el jugador se peude mover a la posicion destino.
+/* Aca se chequea si el jugador se puede mover a la posicion destino.
  Es decir, que no haya obstaculos que se interpongan. De ser asi, no podra moverse */
 Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true
   this.obstaculos().forEach(function(obstaculo) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
-      //this.jugador.perderVidas(1);
+      /* obstaculo debe chocar al jugador*/
+      
       obstaculo.chocar(this.jugador);
       puedeMoverse = false;
     }
@@ -315,8 +307,8 @@ Juego.dibujarFondo = function() {
     delete this.obstaculosCarretera;
     document.getElementById("botonera").style.display = "none";
     this.jugador.velocidad=0;
-    if (this.jugador.vidas==5) {
-      alert("Felicitaciones, ganaste!!!\nHiciste puntaje perfecto!");
+    if (this.jugador.vidas==this.vidasInicial) {
+      alert("No te tenía fé, pero pasaste entre todos los zombies\nsin un rasguño. Bien hecho!");
     }
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
@@ -326,14 +318,12 @@ Juego.dibujarFondo = function() {
   }
 };
 
-Juego.terminoJuego = function() {
-  
+Juego.terminoJuego = function() {  
   return this.jugador.vidas <= 0;
 };
 
 /* Se gana el juego si se sobre pasa cierto altura y */
-Juego.ganoJuego = function() {
-  
+Juego.ganoJuego = function() {  
   return (this.jugador.y + this.jugador.alto) > 530;
 };
 
