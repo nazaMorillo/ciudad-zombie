@@ -308,7 +308,9 @@ Juego.dibujarFondo = function() {
     document.getElementById("botonera").style.display = "none";
     this.jugador.velocidad=0;
     if (this.jugador.vidas==this.vidasInicial) {
-      alert("No te tenía fé, pero pasaste entre todos los zombies\nsin un rasguño. Bien hecho!");
+      alert("Pasaste entre todos los zombies sin un rasguño.\nMuy bien hecho!!!");      
+    }else {
+      alert("No te tenía fé, pero superaste a todos los zombies.\nHoy vives para contarlo");
     }
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
